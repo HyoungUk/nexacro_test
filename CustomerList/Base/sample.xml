@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root xmlns="http://www.nexacroplatform.com/platform/dataset" ver="5000" >
+     <Parameters>
+          <Parameter id="ErrorCode" type="int">0</Parameter>
+          <Parameter id="ErrorMsg" type="string">SUCC</Parameter>
+     </Parameters>
+     <Dataset id="customers">
+          <ColumnInfo>
+               <Column id="id" type="STRING" size="4"/>
+               <Column id="name" type="STRING" size="16"/>
+               <Column id="email" type="STRING" size="32"/>
+               <Column id="phone" type="STRING" size="16"/>
+               <Column id="comp_name" type="STRING" size="32"/>
+               <Column id="department" type="STRING" size="32"/>
+               <Column id="comp_phone" type="STRING" size="16"/>
+               <Column id="comp_addr" type="STRING" size="256"/>
+          </ColumnInfo>
+          <Rows>
+               <Row>
+                    <Col id="id">TC-001</Col>
+                    <Col id="name">Tzuyu</Col>
+                    <Col id="email">ceo@twice.com</Col>
+                    <Col id="phone">6987-6543</Col>
+                    <Col id="comp_name">TWICE</Col>
+                    <Col id="department">0</Col>
+                    <Col id="comp_phone">6506-7000</Col>
+                    <Col id="comp_addr">Seoul</Col>
+               </Row>
+               <Row>
+                    <Col id="id">TC-002</Col>
+                    <Col id="name">Kei</Col>
+                    <Col id="email">kei@lovelyz.ca</Col>
+                    <Col id="phone">7357-3715</Col>
+                    <Col id="comp_name">Lovelyz</Col>
+                    <Col id="department">4</Col>
+                    <Col id="comp_phone">7357-7000</Col>
+                    <Col id="comp_addr">Lansing</Col>
+               </Row>
+               <Row>
+                    <Col id="id">TC-003</Col>
+                    <Col id="name">Choa</Col>
+                    <Col id="email">choa@aoa.com</Col>
+                    <Col id="phone">9025-0645</Col>
+                    <Col id="comp_name">AOA</Col>
+                    <Col id="department">2</Col>
+                    <Col id="comp_phone">9025-7000</Col>
+                    <Col id="comp_addr">Coral Springs</Col>
+               </Row>
+               <Row>
+                    <Col id="id">TC-004</Col>
+                    <Col id="name">Zhou Jieqiong</Col>
+                    <Col id="email">zhou.jieqiong@ioi.ca</Col>
+                    <Col id="phone">7026-3815</Col>
+                    <Col id="comp_name">I.O.I</Col>
+                    <Col id="department">3</Col>
+                    <Col id="comp_phone">7026-7000</Col>
+                    <Col id="comp_addr">Elmira</Col>
+               </Row>
+          </Rows>
+     </Dataset>
+</Root>
