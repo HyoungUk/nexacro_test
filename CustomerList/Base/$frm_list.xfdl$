@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="frm_list" width="800" height="800" titletext="Customer List Search">
+    <Layouts>
+      <Layout height="800" mobileorientation="landscape" width="800">
+        <Static id="sttList" taborder="0" text="Customer List Search" left="102" top="83" width="528" height="30" font="bold 20 Verdana"/>
+        <Div id="divCommand" taborder="1" text="" left="99" top="124" width="539" height="56">
+          <Layouts>
+            <Layout>
+              <Edit id="edtSearch" taborder="0" left="29" top="9" width="286" height="41"/>
+              <Button id="btnSearch" taborder="1" text="Search" left="333" top="10" width="162" height="40" onclick="divCommand_btnSearch_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grdCustomers" taborder="2" left="102" top="191" width="564" height="339" binddataset="dsCustomers">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="118"/>
+                <Column size="129"/>
+                <Column size="145"/>
+                <Column size="170"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="ID"/>
+                <Cell col="1" rowspan="2" text="Name"/>
+                <Cell col="2" text="Email"/>
+                <Cell col="3" text="Company"/>
+                <Cell row="1" col="2" text="Phone"/>
+                <Cell row="1" col="3" text="Departmant"/>
+              </Band>
+              <Band id="body">
+                <Cell rowspan="2" text="bind:id"/>
+                <Cell col="1" rowspan="2" text="bind:name"/>
+                <Cell col="2" text="bind:email"/>
+                <Cell col="3" text="bind:comp_name"/>
+                <Cell row="1" col="2" text="bind:phone"/>
+                <Cell row="1" col="3" text="bind:department"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCustomers">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="4"/>
+          <Column id="name" type="STRING" size="16"/>
+          <Column id="email" type="STRING" size="32"/>
+          <Column id="phone" type="STRING" size="16"/>
+          <Column id="comp_name" type="STRING" size="32"/>
+          <Column id="departmant" type="STRING" size="32"/>
+          <Column id="comp_phone" type="STRING" size="16"/>
+          <Column id="comp_addr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.divCommand_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var row = this.dsCustomers.addRow();
+	this.dsCustomers.setColumn(row, "id", "TC-001");
+	this.dsCustomers.setColumn(row, "name", "Tzuyu");
+	this.dsCustomers.setColumn(row, "email", "ceo@twice.com");
+	this.dsCustomers.setColumn(row, "phone", "6987-6543");
+	this.dsCustomers.setColumn(row, "comp_name", "TWICE");
+	this.dsCustomers.setColumn(row, "department", "0");
+	this.dsCustomers.setColumn(row, "comp_phone", "6506-7000");
+	this.dsCustomers.setColumn(row, "comp_addr", "Seoul");
+};
+]]></Script>
+  </Form>
+</FDL>
