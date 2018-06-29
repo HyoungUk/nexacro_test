@@ -127,12 +127,12 @@
                   </ColumnInfo>
                   <Rows>
                     <Row>
-                      <Col id="codecolumn">W</Col>
-                      <Col id="datacolumn">FeMale</Col>
-                    </Row>
-                    <Row>
                       <Col id="codecolumn">M</Col>
                       <Col id="datacolumn">Male</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">W</Col>
+                      <Col id="datacolumn">FeMale</Col>
                     </Row>
                   </Rows>
                 </Dataset>
