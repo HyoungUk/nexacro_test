@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Hello" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Button id="Button00" taborder="0" text="Hello World" left="99" top="61" width="306" height="89" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("Hello World");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00"/>
+    </Objects>
+  </Form>
+</FDL>

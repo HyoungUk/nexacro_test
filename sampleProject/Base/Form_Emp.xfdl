@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Form_Emp" width="800" height="600" titletext="New Form">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="800">
+        <Static id="st_title" taborder="0" text="Employees" left="27" top="23" width="83" height="57"/>
+        <Button id="btn_retrieve" taborder="1" text="Retrive" left="260" top="28" width="120" height="52" onclick="btn_retrieve_onclick"/>
+        <Button id="btn_add" taborder="2" text="Add" left="390" top="28" width="120" height="52"/>
+        <Button id="btn_del" taborder="3" text="Delete" left="520" top="28" width="120" height="52"/>
+        <Button id="btn_save" taborder="4" text="Save" left="650" top="28" width="120" height="52"/>
+        <Div id="div_search" taborder="5" text="" left="11" top="88" width="759" height="56" border="1px solid #9c9c9c">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="Department" left="18" top="8" width="73" height="30"/>
+              <Edit id="edt_dept_cd" taborder="1" left="104" top="13" width="64" height="28"/>
+              <Edit id="edt_dept_nm" taborder="2" left="179" top="15" width="119" height="28"/>
+              <Button id="btn_dept" taborder="3" text="find" left="314" top="16" width="70" height="28" onclick="div_search_btn_dept_onclick"/>
+              <Static id="Static01" taborder="4" text="Gender" left="396" top="15" width="72" height="34"/>
+              <Radio id="rdo_gender" taborder="5" left="448" top="21" width="190" height="23" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" canitemchange="div_search_rdo_gender_canitemchange">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">A</Col>
+                      <Col id="datacolumn">All</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">M</Col>
+                      <Col id="datacolumn">Male</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">W</Col>
+                      <Col id="datacolumn">Female</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Button id="btn_reset" taborder="6" text="reset" left="648" top="14" width="102" height="32" onclick="div_search_btn_reset_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_list" taborder="6" left="6" top="160" width="370" height="374" binddataset="ds_emp" oncelldblclick="fn_ok">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="EMPL_ID"/>
+                <Cell col="2" text="FULL_NAME"/>
+                <Cell col="3" text="DEPT_CD"/>
+                <Cell col="4" text="POS_CD"/>
+                <Cell col="5" text="HIRE_DATE"/>
+                <Cell col="6" text="SALARY"/>
+                <Cell col="7" text="GENDER"/>
+                <Cell col="8" text="MARRIED"/>
+                <Cell col="9" text="MEMO"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1"/>
+                <Cell col="1" text="bind:EMPL_ID" displaytype="mask" edittype="mask" maskeditformat="AA-###" maskedittype="string"/>
+                <Cell col="2" text="bind:FULL_NAME" displaytype="text" edittype="text"/>
+                <Cell col="3" text="bind:DEPT_CD"/>
+                <Cell col="4" text="bind:POS_CD"/>
+                <Cell col="5" text="bind:HIRE_DATE"/>
+                <Cell col="6" text="bind:SALARY"/>
+                <Cell col="7" text="expr:GENDER == &quot;M&quot; ? &quot;Male&quot; : &quot;Female&quot;"/>
+                <Cell col="8" text="bind:MARRIED"/>
+                <Cell col="9" text="bind:MEMO"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="expr:&quot;Total : &quot; + comp.parent.ds_emp.getRowCount()"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6" text="expr:dataset.getSum('SALARY')"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_detail" taborder="7" text="" left="396" top="156" width="377" height="384" border="1px solid #9c9c9c">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="Name" left="15" top="26" width="74" height="21"/>
+              <Static id="Static01" taborder="1" text="Emp Id" left="10" top="53" width="73" height="21"/>
+              <Static id="Static02" taborder="2" text="Department" left="4" top="74" width="73" height="21"/>
+              <Static id="Static03" taborder="3" text="Married" left="11" top="163" width="73" height="21"/>
+              <Static id="Static04" taborder="4" text="Annual Salary" left="7" top="233" width="73" height="21"/>
+              <Static id="Static05" taborder="5" text="Memo" left="7" top="273" width="73" height="21"/>
+              <Static id="Static06" taborder="6" text="gender" left="11" top="137" width="73" height="21"/>
+              <Static id="Static07" taborder="7" text="position" left="11" top="105" width="73" height="21"/>
+              <Static id="Static08" taborder="8" text="Hire Data" left="11" top="202" width="73" height="21"/>
+              <Edit id="edt_name" taborder="9" left="110" top="22" width="155" height="21"/>
+              <MaskEdit id="msk_id" taborder="10" left="103" top="52" width="184" height="22" format="AA-###" type="string"/>
+              <Combo id="Combo00" taborder="11" text="Combo00" left="95" top="84" width="226" height="23"/>
+              <ListBox id="lst_pos" taborder="12" left="99" top="113" width="240" height="94" innerdataset="@ds_pos" codecolumn="POS_CD" datacolumn="POS_NAME"/>
+              <CheckBox id="chk_married" taborder="13" text="CheckBox00" left="104" top="244" width="76" height="30"/>
+              <Calendar id="cal_date" taborder="14" left="203" top="266" width="156" height="49"/>
+              <MaskEdit id="msk_salary" taborder="15" left="63" top="283" width="98" height="32" format="#,###"/>
+              <Radio id="rdo_gender" taborder="16" left="104" top="211" width="223" height="23" innerdataset="innerdataset" direction="vertical" codecolumn="codecolumn" datacolumn="datacolumn">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">W</Col>
+                      <Col id="datacolumn">FeMale</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">M</Col>
+                      <Col id="datacolumn">Male</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+            </Layout>
+          </Layouts>
+        </Div>
+        <TextArea id="txt_memo" taborder="8" left="412" top="490" width="288" height="40"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_emp">
+        <ColumnInfo>
+          <Column id="EMPL_ID" type="STRING" size="10"/>
+          <Column id="FULL_NAME" type="STRING" size="50"/>
+          <Column id="DEPT_CD" type="STRING" size="10"/>
+          <Column id="POS_CD" type="STRING" size="10"/>
+          <Column id="HIRE_DATE" type="DATE" size="10"/>
+          <Column id="SALARY" type="INT" size="10"/>
+          <Column id="GENDER" type="STRING" size="10"/>
+          <Column id="MARRIED" type="STRING" size="10"/>
+          <Column id="MEMO" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="EMPL_ID">AA001</Col>
+            <Col id="FULL_NAME">Olivia</Col>
+            <Col id="DEPT_CD">01</Col>
+            <Col id="POS_CD">02</Col>
+            <Col id="HIRE_DATE">20101003</Col>
+            <Col id="SALARY">83000</Col>
+            <Col id="GENDER">W</Col>
+            <Col id="MARRIED">true</Col>
+            <Col id="MEMO">ivory</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">AA002</Col>
+            <Col id="FULL_NAME">John</Col>
+            <Col id="DEPT_CD">02</Col>
+            <Col id="POS_CD">02</Col>
+            <Col id="HIRE_DATE">20051011</Col>
+            <Col id="SALARY">76000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">false</Col>
+            <Col id="MEMO">greenyellow</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">BB001</Col>
+            <Col id="FULL_NAME">Jackson</Col>
+            <Col id="DEPT_CD">02</Col>
+            <Col id="POS_CD">03</Col>
+            <Col id="HIRE_DATE">20070206</Col>
+            <Col id="SALARY">95000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">frue</Col>
+            <Col id="MEMO">aliceblue</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">BB002</Col>
+            <Col id="FULL_NAME">Maia</Col>
+            <Col id="DEPT_CD">04</Col>
+            <Col id="POS_CD">01</Col>
+            <Col id="HIRE_DATE">20090512</Col>
+            <Col id="SALARY">60000</Col>
+            <Col id="GENDER">W</Col>
+            <Col id="MARRIED">false</Col>
+            <Col id="MEMO">ivory</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">CC001</Col>
+            <Col id="FULL_NAME">Adam</Col>
+            <Col id="DEPT_CD">04</Col>
+            <Col id="POS_CD">04</Col>
+            <Col id="HIRE_DATE">20010109</Col>
+            <Col id="SALARY">88000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">true</Col>
+            <Col id="MEMO">greenyellow</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">DD001</Col>
+            <Col id="FULL_NAME">Tyler</Col>
+            <Col id="DEPT_CD">04</Col>
+            <Col id="POS_CD">03</Col>
+            <Col id="HIRE_DATE">20060907</Col>
+            <Col id="SALARY">60000</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">false</Col>
+            <Col id="MEMO">lightgray</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="DEPT_CD" type="STRING" size="32"/>
+          <Column id="DEPT_NAME" type="STRING" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DEPT_CD">01</Col>
+            <Col id="DEPT_NAME">Accounting_Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">02</Col>
+            <Col id="DEPT_NAME">HR_Tea </Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">03</Col>
+            <Col id="DEPT_NAME">Seles_Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">04</Col>
+            <Col id="DEPT_NAME">Deskg_Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">05</Col>
+            <Col id="DEPT_NAME">Education_Team</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_pos">
+        <ColumnInfo>
+          <Column id="POS_CD" type="STRING" size="32"/>
+          <Column id="POS_NAME" type="STRING" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="POS_CD">04</Col>
+            <Col id="POS_NAME">Officer</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CD">03</Col>
+            <Col id="POS_NAME">Assistant Manager</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CD">02</Col>
+            <Col id="POS_NAME">Division Manager</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CD">01</Col>
+            <Col id="POS_NAME">Chairman</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_detail.form.edt_name" propid="value" datasetid="ds_emp" columnid="FULL_NAME"/>
+      <BindItem id="item1" compid="div_detail.form.msk_id" propid="value" datasetid="ds_emp" columnid="EMPL_ID"/>
+      <BindItem id="item2" compid="div_detail.form.Combo00" propid="value" datasetid="ds_emp" columnid="DEPT_CD"/>
+      <BindItem id="item3" compid="div_detail.form.rdo_gender" propid="value" datasetid="ds_emp" columnid="GENDER"/>
+      <BindItem id="item4" compid="div_detail.form.cal_date" propid="value" datasetid="ds_emp" columnid="HIRE_DATE"/>
+      <BindItem id="item5" compid="txt_memo" propid="value" datasetid="ds_emp" columnid="MEMO"/>
+      <BindItem id="item6" compid="div_detail.form.msk_salary" propid="value" datasetid="ds_emp" columnid="SALARY"/>
+      <BindItem id="item7" compid="div_detail.form.chk_married" propid="value" datasetid="ds_emp" columnid="MARRIED"/>
+      <BindItem id="item8" compid="div_detail.form.lst_pos" propid="value" datasetid="ds_emp" columnid="POS_CD"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.div_search_btn_dept_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+	var nLeft = system.clientToScreenX(this, 10);
+	var nTop = system.clientToScreenY(this, 10);
+	
+	var objChild = new ChildFrame("popDept", "absolute", nLeft, nTop, 300, 400);
+	objChild.set_formurl("Base::Pop_DeptSearch.xfdl");
+	objChild.set_openalign("center middle");
+	objChild.set_dragmovetype("all");
+	
+	objChild.showModal(this.getOwnerFrame()
+						, {}
+						, this
+						, "fn_callback_pop");
+};
+
+this.fn_callback_pop = function(sPopupId, sReturn){
+	if (sReturn == undefined)
+	{
+		sReturn = "";
+	}
+	if (sPopupId == "popDept")
+	{
+		if (sReturn.length > 0)
+		{
+			var arrRtn = sReturn.split("|");
+			this.div_search.form.edt_dept_cd.set_value(arrRtn[0]);
+			this.div_search.form.edt_dept_nm.set_value(arrRtn[1]);
+		}
+	}
+}
+
+this.fn_ok = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sRtn = this.ds_dept.getColumn(this.ds_dept.rowposition, "DEPT_CD") + "|";
+	    sRtn += this.ds_dept.getColumn(this.ds_dept.rowposition, "DEPT_NAME");
+	this.close(sRtn);
+};
+
+this.div_search_rdo_gender_canitemchange = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+	if (e.postvalue == "A")
+	{
+		this.ds_emp.filter("");
+	}
+	else
+	{
+		this.ds_emp.filter("GENDER == '" + e.postvalue + "'");
+	}
+};
+
+this.div_search_btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.div_search.form.edt_dept_cd.set_value("");
+	this.div_search.form.edt_dept_nm.set_value("");
+	this.div_search.form.rdo_gender.set_value("A");
+};
+
+this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+//	var sDeptCd = this.div_search.form.edt_dept_cd.value;
+	
+	this.transaction("svcSelect"
+					, "SvcURL::select_emp.jsp?"
+					, ""
+					, "ds_emp=out_emp"
+					, ""
+					, "fn_callback");
+};
+
+this.fn_callback = function(svcID, errCD, errMSG)
+{
+	if (errCD < 0)
+	{
+		this.alert("Error: " + errMSG);
+		return;
+	}
+	if (svcID == "svcSelect")
+	{
+		this.alert("Retrieve Success!!");
+	}
+}
+
+
+
+
+
+]]></Script>
+  </Form>
+</FDL>

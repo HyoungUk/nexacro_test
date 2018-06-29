@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Pop_DeptSearch" width="300" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="300">
+        <Static id="Static00" taborder="0" text="Department Search" left="16" top="14" width="269" height="32"/>
+        <Grid id="grd_list" taborder="1" left="10" top="62" width="272" height="285" binddataset="ds_dept">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="111"/>
+                <Column size="160"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="DEPT_CD"/>
+                <Cell col="1" text="DEPT_NAME"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DEPT_CD"/>
+                <Cell col="1" text="bind:DEPT_NAME"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_ok" taborder="2" text="OK" left="67" top="359" width="60" height="28" onclick="btn_ok_onclick"/>
+        <Button id="btn_cancel" taborder="3" text="Cancel" left="145" top="360" width="92" height="26" onclick="btn_cancel_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="DEPT_CD" type="STRING" size="32"/>
+          <Column id="DEPT_NAME" type="STRING" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DEPT_CD">01</Col>
+            <Col id="DEPT_NAME">Accounting Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">02</Col>
+            <Col id="DEPT_NAME">HR Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">03</Col>
+            <Col id="DEPT_NAME">Sales Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">04</Col>
+            <Col id="DEPT_NAME">Design Team</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT_CD">05</Col>
+            <Col id="DEPT_NAME">Education Team</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sRtn = this.ds_dept.getColumn(this.ds_dept.rowposition, "DEPT_CD") + "|";
+	    sRtn += this.ds_dept.getColumn(this.ds_dept.rowposition, "DEPT_NAME");
+	this.close(sRtn);
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>
